@@ -107,7 +107,7 @@ class plgContentPlg_clm_sbnrw_ext extends JPlugin {
 			$before = $next;
 		}
 		while (!$stop);
-		return '<div id="clm"><div id="rangliste">' . $in . $zeile . '</div></div>';
+		return $in . $zeile;
 	}
 	protected function mm_nrwligen_print($my_config, $old, $number) {
 		if (!ini_get('allow_url_fopen')) {
@@ -222,7 +222,7 @@ class plgContentPlg_clm_sbnrw_ext extends JPlugin {
 		require_once (JPATH_SITE . DS . 'components/com_clm/includes' . DS . 'css_path.php');
 		$xml = new SimpleXMLElement($html);
 		$html = '
-<div class="plg_clm_sbnrw_ext">
+<div class="clm"><div id="rangliste"><div class="plg_clm_sbnrw_ext">
 <table cellpadding="0" cellspacing="0" class="rangliste" style="' . $this->get_css_style($style) . '">
 <tr>
 	<th class="rang"><div>Rg</div></th>
@@ -351,7 +351,7 @@ class plgContentPlg_clm_sbnrw_ext extends JPlugin {
 			$html.= '<div style="' . $this->get_css_style($style) . '" id="plg_clm_sbnrw_' . $number . '"></div>';
 		}
 		$html.= '
-</div>
+</div></div></div>
 ';
 		return array(true, $html);
 	}

@@ -36,7 +36,7 @@ if (isset($_GET["tid"]) && is_numeric($_GET["tid"]) && isset($_GET["round"]) && 
 		$before = false;
 	}
 ?>
-<div id="clm">
+<div class="clm">
  <div id="runde">
   <div class="nrw-extern">
    <table cellpadding="0" cellspacing="0" class="runde">

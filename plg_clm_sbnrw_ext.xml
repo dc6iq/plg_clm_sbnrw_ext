@@ -2,12 +2,12 @@
 <extension version="2.5" method="upgrade" type="plugin" group="content">
   <name>plg_clm_sbnrw_ext</name>
   <author>Fred Baumgarten</author>
-  <creationDate>2014-07-22</creationDate>
-  <copyright>Copyright (C) 2014 - Fred Baumgarten</copyright>
+  <creationDate>22.01.2015</creationDate>
+  <copyright>Copyright (C) 2015 - Fred Baumgarten</copyright>
   <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
   <authorEmail>dc6iq@gmx.de</authorEmail>
   <authorUrl>sv-hennef.de</authorUrl>
-  <version>1.2.0</version>
+  <version>3.2.1</version>
   <description>PLG_CLM_SBNRW_EXT_DESC</description>
 
   <files>

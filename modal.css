@@ -26,14 +26,14 @@
     z-index: 100;
     margin-left:-28px;
     margin-top:-28px;
--moz-border-radius:10px; /* Firefox */
--webkit-border-radius:10px; /* Safari, Chrome */
--khtml-border-radius:10px; /* Konqueror */
-border-radius:10px; /* CSS3 */
+    -moz-border-radius:10px; /* Firefox */
+    -webkit-border-radius:10px; /* Safari, Chrome */
+    -khtml-border-radius:10px; /* Konqueror */
+    border-radius:10px; /* CSS3 */
     overflow:scroll;
 }
 
-.wrapper{
+#clm .clm-wrapper{
     position:absolute;
     top:0;
     left:0;

@@ -23,10 +23,10 @@ function plg_clm_sbnrw_modal_load (tid,round,urlbase,lang,number) {
 	
 	
   if(!document.getElementById("plg-clm-sbnrw-fade")) {
-    document.body.innerHTML = '<div class="clm-wrapper"><div id="plg-clm-sbnrw-fade"></div><div id="plg-clm-sbnrw-overlay"><img class="load" src="' +
+    document.getElementById('clm').innerHTML = '<div class="clm-wrapper"><div id="plg-clm-sbnrw-fade"></div><div id="plg-clm-sbnrw-overlay"><img class="load" src="' +
       urlbase + '/plugins/content/plg_clm_sbnrw_ext/ajax.gif" /></div><a onclick="plg_clm_sbnrw_modal_disable(\'' +
       urlbase + '\')" href="javascript:void(0)"><img id="plg-clm-sbnrw-close" src="' +
-      urlbase + '/plugins/content/plg_clm_sbnrw_ext/close.png" /></a></div>' + document.body.innerHTML;
+      urlbase + '/plugins/content/plg_clm_sbnrw_ext/close.png" /></a></div>' + document.getElementById('clm').innerHTML;
   }
   
   
