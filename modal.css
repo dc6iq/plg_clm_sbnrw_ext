@@ -1,0 +1,71 @@
+#plg-clm-sbnrw-fade {
+    display: none;  
+    position: fixed; 
+    left: 0%;
+    top: 0%; 
+    background-color: black;
+    -moz-opacity: 0.6;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+}
+
+#plg-clm-sbnrw-overlay {
+    display: none;
+    position:fixed;
+    background-color: #fefefe;
+    padding: 25px; 
+    border: 6px double black;
+    background-color: #ffffff;
+    width: 80%;
+    height: 80%;
+    top:10%;
+    left:10%;
+    z-index: 100;
+    margin-left:-28px;
+    margin-top:-28px;
+-moz-border-radius:10px; /* Firefox */
+-webkit-border-radius:10px; /* Safari, Chrome */
+-khtml-border-radius:10px; /* Konqueror */
+border-radius:10px; /* CSS3 */
+    overflow:scroll;
+}
+
+.wrapper{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+#clm #runde .nrw-extern table tr{
+    border: none 0;
+}
+
+#clm #runde .nrw-extern table .noborder{
+    height:20px;
+}
+
+#plg-clm-sbnrw-overlay .load{
+    position: absolute;
+    top: 0; bottom:0; left: 0; right:0;
+    margin: auto;
+    max-width:512px;
+    max-height:512px;
+    margin-top: auto;
+    width:100%;
+}
+
+#plg-clm-sbnrw-close{
+    display: none;
+    position:fixed;
+    width: 50px;
+    right: 1%;
+    top: 1%;
+    z-index: 110;
+    margin-left:-25px;
+}
+

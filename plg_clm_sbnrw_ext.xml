@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" method="upgrade" type="plugin" group="content">
+  <name>plg_clm_sbnrw_ext</name>
+  <author>Fred Baumgarten</author>
+  <creationDate>2014-07-22</creationDate>
+  <copyright>Copyright (C) 2014 - Fred Baumgarten</copyright>
+  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+  <authorEmail>dc6iq@gmx.de</authorEmail>
+  <authorUrl>sv-hennef.de</authorUrl>
+  <version>1.2.0</version>
+  <description>PLG_CLM_SBNRW_EXT_DESC</description>
+
+  <files>
+    <filename plugin="plg_clm_sbnrw_ext">plg_clm_sbnrw_ext.php</filename>
+    <filename>modal.php</filename>
+    <filename>modal.css</filename>
+    <filename>modal.js</filename>
+    <filename>under.php</filename>
+    <filename>under.js</filename>
+    <filename>index.html</filename>
+    <filename>round.php</filename>
+    <filename>reload.png</filename>
+    <filename>close.png</filename>
+    <filename>ajax.gif</filename>
+    <folder>language</folder>
+  </files>
+
+  <languages folder="language">
+    <language tag="de-DE">de-DE/de-DE.plg_content_plg_clm_sbnrw_ext.ini</language>
+    <language tag="en-GB">en-GB/en-GB.plg_content_plg_clm_sbnrw_ext.ini</language>
+    <language tag="de-DE">de-DE/de-DE.plg_content_plg_clm_sbnrw_ext.sys.ini</language>
+    <language tag="en-GB">en-GB/en-GB.plg_content_plg_clm_sbnrw_ext.sys.ini</language>
+    <language tag="de-DE">de-DE/de-DE.plg_content_plg_clm_sbnrw_ext_round.ini</language>
+    <language tag="en-GB">en-GB/en-GB.plg_content_plg_clm_sbnrw_ext_round.ini</language>
+  </languages>
+
+         <config>
+                <fields name="params">
+ 
+                        <fieldset name="basic">
+                                <field name="ajax" type="radio"
+                                        default="2"
+                                        label="AJAX">
+                                        <option value="0">DISABLE</option>
+                                        <option value="1">WITHOUT OVERLAY</option>
+                                        <option value="2">ENABLE</option>
+                                </field>
+                        </fieldset>
+ 
+                </fields>
+        </config>
+</extension>
