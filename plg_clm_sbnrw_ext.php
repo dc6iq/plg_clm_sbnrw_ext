@@ -5,7 +5,7 @@ defined('_JEXEC') or die('Unerlaubter Zugriff');
 jimport('joomla.plugin.plugin');
 // Rumpf unserer Plugin-Klasse
 class plgContentPlg_clm_sbnrw_ext extends JPlugin {
-	function plgContentPlg_clm_sbnrw_ext(&$subject, $my_config) {
+	function __construct(&$subject, $my_config) {
 		if(!defined("DS")){define('DS', DIRECTORY_SEPARATOR);} // fix for Joomla 3.2
 		parent::__construct($subject, $my_config);
 	}
