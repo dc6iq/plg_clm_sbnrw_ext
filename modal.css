@@ -9,12 +9,12 @@
     filter: alpha(opacity=60);
     width: 100%;
     height: 100%;
-    z-index: 90;
+    z-index: 9999;
 }
 
 #plg-clm-sbnrw-overlay {
     display: none;
-    position:fixed;
+    position: fixed;
     background-color: #fefefe;
     padding: 25px; 
     border: 6px double black;
@@ -23,18 +23,19 @@
     height: 80%;
     top:10%;
     left:10%;
-    z-index: 10000;
+    z-index: 9999;
     margin-left:-28px;
     margin-top:-28px;
     -moz-border-radius:10px; /* Firefox */
     -webkit-border-radius:10px; /* Safari, Chrome */
     -khtml-border-radius:10px; /* Konqueror */
     border-radius:10px; /* CSS3 */
-    overflow:scroll;
+    overflow: scroll;
 }
 
 #clm .clm-wrapper{
-    position:absolute;
+    display: none;
+    position: absolute;
     top:0;
     left:0;
     right:0;
@@ -51,7 +52,10 @@
 
 #plg-clm-sbnrw-overlay .load{
     position: absolute;
-    top: 0; bottom:0; left: 0; right:0;
+    top: 0; 
+    bottom:0; 
+    left: 0; 
+    right:0;
     margin: auto;
     max-width:512px;
     max-height:512px;
@@ -61,11 +65,11 @@
 
 #plg-clm-sbnrw-close{
     display: none;
-    position:fixed;
+    position: fixed;
     width: 50px;
     right: 1%;
     top: 1%;
-    z-index: 110;
+    z-index: 9999;
     margin-left:-25px;
 }
 
