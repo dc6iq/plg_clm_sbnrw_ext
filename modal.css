@@ -1,5 +1,4 @@
-#plg-clm-sbnrw-fade {
-    display: none;  
+#clm #clm-wrapper .plg-clm-sbnrw-fade {
     position: fixed; 
     left: 0%;
     top: 0%; 
@@ -12,8 +11,7 @@
     z-index: 9999;
 }
 
-#plg-clm-sbnrw-overlay {
-    display: none;
+#clm #clm-wrapper .plg-clm-sbnrw-overlay {
     position: fixed;
     background-color: #fefefe;
     padding: 25px; 
@@ -33,7 +31,7 @@
     overflow: scroll;
 }
 
-#clm .clm-wrapper{
+#clm #clm-wrapper{
     display: none;
     position: absolute;
     top:0;
@@ -50,7 +48,7 @@
     height:20px;
 }
 
-#plg-clm-sbnrw-overlay .load{
+#clm #clm-wrapper .plg-clm-sbnrw-overlay .load{
     position: absolute;
     top: 0; 
     bottom:0; 
@@ -63,8 +61,7 @@
     width:100%;
 }
 
-#plg-clm-sbnrw-close{
-    display: none;
+#clm #clm-wrapper .plg-clm-sbnrw-close{
     position: fixed;
     width: 50px;
     right: 1%;
