@@ -227,6 +227,20 @@ class plgContentPlg_clm_sbnrw_ext extends JPlugin {
 <tr>
 	<th class="rang"><div>Rg</div></th>
 	';
+		// einfache Runde oder doppelrundig
+		$d = 0;
+		foreach ($xml->rangliste->teams as $oneTeam) {
+			foreach ($oneTeam->kreuzBody->e as $e) {
+				if ($e == "**") {
+					$d = 1;
+				} 
+				if ($e->eHR == "**") {
+					$d = 2;
+				}
+				if ($d > 0) break;
+			}
+			if ($d > 0) break;
+		}
 		if ($season != "") {
 			$html.= '<th class="team"><div><a target="_blank" href="http://nrw.svw.info/ergebnisse/show/42/' . $my_config[0] . '/tabelle/">' . $xml->tname . " - " . $season . '</a></div></th>';
 		} else {
@@ -236,6 +250,11 @@ class plgContentPlg_clm_sbnrw_ext extends JPlugin {
 		foreach ($xml->kreuzHeader->eH as $eH) {
 			$html.= '<th class="rnd"><div>' . $eH . '</div></th>';
 			$team++;
+		}
+		if ($d == 2) {
+			foreach ($xml->kreuzHeader->eH as $eH) {
+				$html.= '<th class="rnd"><div>' . $eH . '</div></th>';
+			}
 		}
 		// check if there are enough teams
 		if ($team == 0) {
@@ -300,11 +319,29 @@ class plgContentPlg_clm_sbnrw_ext extends JPlugin {
 			if (!$exist) {
 				$html.= '<td class="team">' . $oneTeam->team . '</td>';
 			}
-			foreach ($oneTeam->kreuzBody->e as $e) {
-				if ($e == "**") {
-					$html.= '<td class="trenner">X</td>';
-				} else {
-					$html.= '<td>' . $e . '</td>';
+			if ($d == 1) {
+				foreach ($oneTeam->kreuzBody->e as $e) {
+					if ($e == "**") {
+						$html.= '<td class="trenner">X</td>';
+					} else {
+						$html.= '<td>' . $e . '</td>';
+					}
+				}
+			}
+			if ($d ==2) {
+				foreach ($oneTeam->kreuzBody->e as $e) {
+					if ($e->eHR == "**") {
+						$html.= '<td class="trenner">X</td>';
+					} else {
+						$html.= '<td>' . $e->eHR . '</td>';
+					}
+				}
+				foreach ($oneTeam->kreuzBody->e as $e) {
+					if ($e->eHR == "**") {
+						$html.= '<td class="trenner">X</td>';
+					} else {
+						$html.= '<td>' . $e->eRR . '</td>';
+					}
 				}
 			}
 			$html.= '<td class="mp">' . $oneTeam->mp . '</td>
@@ -326,13 +363,21 @@ class plgContentPlg_clm_sbnrw_ext extends JPlugin {
 				$lang = JFactory::getLanguage();
 				$ajax.= '<th class="rnd"><a onclick="plg_clm_sbnrw_modal_load(' . $my_config[0] . ',' . $i . ',\'' . JURI::base(true) . '\',\'' . $lang->getTag() . '\',\'' . $number . '\')" href="javascript:void(0)">' . $i . '</a></th>';
 			}
+			if($team%2==0) $ajax.= "<th></th>";
+			if ($d == 2) {
+				for ($i = 1;$i < $rounds;$i++) {
+					$lang = JFactory::getLanguage();
+					$ajax.= '<th class="rnd"><a onclick="plg_clm_sbnrw_modal_load(' . $my_config[0] . ',' . ($i + $rounds - 1) . ',\'' . JURI::base(true) . '\',\'' . $lang->getTag() . '\',\'' . $number . '\')" href="javascript:void(0)">' . ($i + $rounds - 1) . '</a></th>';
+				}
+				if($team%2==0) $ajax.= "<th></th>";
+			}
 			$lang = JFactory::getLanguage();
 			$lang->load('plg_content_plg_clm_sbnrw_ext_round', JPATH_ADMINISTRATOR);
-			if($team%2==0) {
-				$html.= "<tr><th colspan='2'>" . JText::_("PLG_CLM_SBNRW_ROUND") . "</th>" . $ajax . "<th></th><th></th><th></th></tr>";
-			} else {
+			//if($team%2==0) {
+			//	$html.= "<tr><th colspan='2'>" . JText::_("PLG_CLM_SBNRW_ROUND") . "</th>" . $ajax . "<th></th><th></th><th></th></tr>";
+			//} else {
 				$html.= "<tr><th colspan='2'>" . JText::_("PLG_CLM_SBNRW_ROUND") . "</th>" . $ajax . "<th></th><th></th></tr>";
-			}
+			//}
 			if ($this->params->get('ajax', 1) == 2) {
 				ob_start();
 				require_once ("modal.php");
