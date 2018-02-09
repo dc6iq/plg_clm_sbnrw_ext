@@ -209,7 +209,18 @@ class plgContentPlg_clm_sbnrw_ext extends JPlugin {
 			return array(false, "&lt;plg_clm_sbnrw_ext&gt;" . JText::_("PLG_CLM_SBNRW_ERR_MAX") . "&lt;/plg_clm_sbnrw_ext&gt;");
 		}
 		$url = 'http://nrw.svw.info/tools/export/tabelle.php?tid=' . $my_config[0];
-		if (!$html = file_get_contents($url)) {
+		$ping = `ping -c1 -w1 nrw.svw.info`;
+		if (preg_match('/100% packet loss/', $ping) == 1) {
+			$html = "keine Verbindung";
+		} else {
+			$html = file_get_contents($url);
+		}
+		if ($html == "keine Verbindung") {
+			$html = "Es konnte keine Verbindung zum Server des Schachbundes NRW hergestellt werden - Der Server ist nicht erreichbar<br />";
+			$html .= "<pre>" . $ping . "</pre>";
+			return array(true, $html);
+		}
+		if (!$html) {
 			$lang = JFactory::getLanguage();
 			$lang->load('plg_content_plg_clm_sbnrw_ext', JPATH_ADMINISTRATOR);
 			return array(false, "&lt;plg_clm_sbnrw_ext&gt;" . JText::_("PLG_CLM_SBNRW_ERR_CONNECTION") . "&lt;/plg_clm_sbnrw_ext&gt;");
@@ -242,9 +253,10 @@ class plgContentPlg_clm_sbnrw_ext extends JPlugin {
 			if ($d > 0) break;
 		}
 		if ($season != "") {
-			$html.= '<th class="team"><div><a target="_blank" href="http://nrw.svw.info/ergebnisse/show/42/' . $my_config[0] . '/tabelle/">' . $xml->tname . " - " . $season . '</a></div></th>';
+			$jahr = substr($season, 0, 4);
+			$html.= '<th class="team"><div><a target="_blank" href="http://nrw.svw.info/ergebnisse/show/' . $jahr . '/' . $my_config[0] . '/tabelle/">' . $xml->tname . " - " . $season . '</a></div></th>';
 		} else {
-			$html.= '<th class="team"><div><a target="_blank" href="http://nrw.svw.info/ergebnisse/show/42/' . $my_config[0] . '/tabelle/">' . $xml->tname . '</a></div></th>';
+			$html.= '<th class="team"><div><a target="_blank" href="http://nrw.svw.info/ergebnisse/show/2016/' . $my_config[0] . '/tabelle/">' . $xml->tname . '</a></div></th>';
 		}
 		$team = 0;
 		foreach ($xml->kreuzHeader->eH as $eH) {
